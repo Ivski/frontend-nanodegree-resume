@@ -112,21 +112,26 @@ if (bio.skills.length != 0) {
 	}
 }
 
-for (job in work) {
-	$("#workExperience").append(HTMLworkStart);
-	var employer = HTMLworkEmployer.replace("%data%", work[job].employer);
-	var title = HTMLworkTitle.replace("%data%", work[job].title);
-	$(".work-entry:last").append(employer + title);
 
-	var dates = HTMLworkDates.replace("%data%", work[job].dates);
-	$(".work-entry:last").append(dates);
+function displayWork() {
+	for (job in work) {
+		$("#workExperience").append(HTMLworkStart);
+		var employer = HTMLworkEmployer.replace("%data%", work[job].employer);
+		var title = HTMLworkTitle.replace("%data%", work[job].title);
+		$(".work-entry:last").append(employer + title);
 
-	var city = HTMLworkLocation.replace("%data%", work[job].location);
-	$(".work-entry:last").append(city);
+		var dates = HTMLworkDates.replace("%data%", work[job].dates);
+		$(".work-entry:last").append(dates);
 
-	var description = HTMLworkDescription.replace("%data%", work[job].description);
-	$(".work-entry:last").append(description);
+		var city = HTMLworkLocation.replace("%data%", work[job].location);
+		$(".work-entry:last").append(city);
 
-
-
+		var description = HTMLworkDescription.replace("%data%", work[job].description);
+		$(".work-entry:last").append(description);
+	}
 }
+displayWork();
+
+$(document).click(function(loc) {
+  logClicks(loc.pageX, loc.pageY);
+});
