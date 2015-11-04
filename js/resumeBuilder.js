@@ -1,43 +1,43 @@
-var work = [ 
-	{
-		"job" : {
-		"employer" : "AdCash Ltd",
-		"title" : "Lead Android Developer",
-		"location" : "London",
-		"dates" : "03/2015-present",
-		"description" : "More from Mobile"
-	}},
-	{
-		"job" : {
-		"employer" : "KweekWeek",
-		"title" : "Senior Android Developer",
-		"location" : "London",
-		"dates" : "11/2014-03/2015",
-		"description" : "Event Discovery"
-	}},
-	{
-		"job" : {
-		"employer" : "Palringo",
-		"title" : "Android Developer",
-		"location" : "Ipswich",
-		"dates" : "01/2014-10/2014",
-		"description" : "Messenger"
-	}}
+var work = [
+   {
+      "employer":"AdCash Ltd",
+      "title":"Lead Android Developer",
+      "location":"London",
+      "dates":"03/2015-present",
+      "description":"More from Mobile"
+   },
+   {
+      "employer":"KweekWeek",
+      "title":"Senior Android Developer",
+      "location":"London",
+      "dates":"11/2014-03/2015",
+      "description":"Event Discovery"
+   },
+   {
+      "employer":"Palringo",
+      "title":"Android Developer",
+      "location":"Ipswich",
+      "dates":"01/2014-10/2014",
+      "description":"Messenger"
+   }
 ];
 
-var projects = [
-	{"project" : {
-		"title" : "",
-		"dates" : "",
-		"description" : "",
-		"images" : []
-	}}
+var projects = [  
+   {  
+      "title":"",
+      "dates":"",
+      "description":"",
+      "images":[  
+
+      ]
+   }
 ];
 
 var bio = {
 	"name" : "Iva Nedeleva",
 	"role" : "Lead Android Developer",
 	"welcomeMessage" : "Android fan during the day, Rock fan during the night.",
+	"pic" : "images/profile_image.png",
 	"contacts" : {
 		"mobile" : "07429085207",
 		"email" : "iva@sliideapp.com",
@@ -99,6 +99,12 @@ var education = [
 	]}
 ];
 
+$("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
+$("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
+$("#header").append(HTMLbioPic.replace("%data%", bio.pic));
+$("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+$("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
+
 if (bio.skills.length != 0) {
 	$("#header").append(HTMLskillsStart);
 	for (var i = 0; i < bio.skills.length; i++) {
@@ -107,10 +113,20 @@ if (bio.skills.length != 0) {
 }
 
 for (job in work) {
-	console.log(work[job].job.title);
 	$("#workExperience").append(HTMLworkStart);
-	var employer = HTMLworkEmployer.replace("%data%", work[job].job.employer);
-	var title = HTMLworkTitle.replace("%data%", work[job].job.title);
+	var employer = HTMLworkEmployer.replace("%data%", work[job].employer);
+	var title = HTMLworkTitle.replace("%data%", work[job].title);
 	$(".work-entry:last").append(employer + title);
+
+	var dates = HTMLworkDates.replace("%data%", work[job].dates);
+	$(".work-entry:last").append(dates);
+
+	var city = HTMLworkLocation.replace("%data%", work[job].location);
+	$(".work-entry:last").append(city);
+
+	var description = HTMLworkDescription.replace("%data%", work[job].description);
+	$(".work-entry:last").append(description);
+
+
 
 }
