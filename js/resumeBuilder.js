@@ -24,11 +24,19 @@ var work = [
 
 var projects = [  
    {  
-      "title":"",
-      "dates":"",
-      "description":"",
+      "title":"Sliide",
+      "dates":"2015",
+      "description":"Awesome Lock Screen Rewards",
       "images":[  
-
+      		"images/sliide.png"
+      ]
+   },
+   {  
+      "title":"Sliide Airtime",
+      "dates":"2015",
+      "description":"More from mobile!",
+      "images":[  
+      		"images/sliide_airtime.png"
       ]
    }
 ];
@@ -132,6 +140,29 @@ function displayWork() {
 }
 displayWork();
 
+projects.display = function() {
+	for (project in projects) {
+		$("#projects").append(HTMLprojectStart);
+		var title = projects[project].title;
+		$(".project-entry:last").append(HTMLprojectTitle.replace("%data%", title));
+		var dates = projects[project].dates;
+		$(".project-entry:last").append(HTMLprojectDates.replace("%data%", dates));
+		var description = projects[project].description;
+		$(".project-entry:last").append(HTMLprojectDescription.replace("%data%", description));
+		var images = projects[project].images;
+		for (i in images) {
+			$(".project-entry:last").append(HTMLprojectImage.replace("%data%", images[i]));
+		}
+		
+	}
+}
+
+projects.display();
+
 $(document).click(function(loc) {
   logClicks(loc.pageX, loc.pageY);
 });
+
+$("#mapDiv").append(googleMap);
+
+
